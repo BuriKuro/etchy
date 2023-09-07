@@ -1,6 +1,8 @@
+//  Load js after the DOM to prevent errors.
 document.addEventListener("DOMContentLoaded", function(){
-    createBoard(16);
+    createBoard(4);
 
+//    Button listener for manual size input.
     let btn_popup = document.querySelector("#popup");
     btn_popup.addEventListener("click", function(){
         let size = prompt("What size board would you like?");
@@ -16,14 +18,18 @@ document.addEventListener("DOMContentLoaded", function(){
 function createBoard(size){
     let board = document.querySelector(".board");
 
-    board.style.gridTemplateColumn = `repeat(${size}, 1fr)`;
-    board.style.gridTemplateRow = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
     let numDivs = size * size;
 
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
-        div.style.backgroundColor = "orange";
+        div.addEventListener("mouseover", function(){
+            div.style.backgroundColor ="black";
+        }
+        
+        )
         board.insertAdjacentElement("beforeend", div);
 
     }
@@ -41,17 +47,6 @@ function isValidSize(size) {
 
 
 /* 
-    HEADER
-    Button listener for manual size input.
-
-    Run a JS function when button is clicked in HTML (research).
-    (Check out prompt.)
-    (Should be able to enter 32, 64, etc without grid size changing.)
-
-
-    BODY
-    -Input size changes size of grid.
-
     User input on hover turns div section to fill with color.
 
     FOOTER
