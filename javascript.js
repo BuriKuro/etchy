@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", function(){
-    createBoard(36);
-    getSize();
-    console.log("test")
+    createBoard(16);
 
-})
+    let btn_popup = document.querySelector("#popup");
+    btn_popup.addEventListener("click", function(){
+        let size = prompt("What size board would you like?");
+        if (isValidSize(size)) {
+            createBoard(size);
+        }
+    });
+});
 
+
+
+//    Break grid into squares, equal width and height.
 function createBoard(size){
     let board = document.querySelector(".board");
 
-    board.computedStyleMap.gridTemplateColumn = "repeat(${size}, 1fr)";
-    board.computedStyleMap.gridTemplateRow = "repeat(${size}, 1fr)";
+    board.style.gridTemplateColumn = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRow = `repeat(${size}, 1fr)`;
 
     let numDivs = size * size;
 
@@ -22,29 +30,19 @@ function createBoard(size){
 
 }
 
-function getSize(){
-
-    let input = prompt("What size board would you like?");
-    if(input == ""){
-        alert("Please enter a number between 1-100.")
+//    Check if valid number.
+function isValidSize(size) {
+    if (size ==="" || isNaN(size) || size < 1 || size > 100) {
+        alert("Please enter a valid number between 1 and 100.");
+        return false;
     }
-
-    else if(input < 1 || input > 100){
-        alert("Please enter a number between 1-100.")
-    }
-
-    else{
-        alert("Time to draw!")
-    }
+    return true;
 }
 
 
 /* 
     HEADER
     Button listener for manual size input.
-    -Pop-up window for input.
-    --Window accepts 1-100.
-    --Does not accept words, negative numbers, or numbers larger than 100.
 
     Run a JS function when button is clicked in HTML (research).
     (Check out prompt.)
@@ -52,8 +50,6 @@ function getSize(){
 
 
     BODY
-    Style grid to be broken down into squares.
-    -Equal height and width. 
     -Input size changes size of grid.
 
     User input on hover turns div section to fill with color.
