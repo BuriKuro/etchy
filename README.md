@@ -1,2 +1,2 @@
-# etchy
-Etchasketch - Odin Project
+# etchasketch
+# etchasketch
