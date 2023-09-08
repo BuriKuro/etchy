@@ -1,18 +1,8 @@
+let color = "black";
+
 //  Load js after the DOM to prevent errors.
 document.addEventListener("DOMContentLoaded", function(){
     createBoard(4);
-
-//    Button listener for manual size input.
-    let btn_popup = document.querySelector("#popup");
-    btn_popup.addEventListener("click", function(){
-        let size = prompt("What size board would you like?");
-        if (isValidSize(size)) {
-            createBoard(size);
-        }
-    });
-});
-
-
 
 //    Break grid into squares, equal width and height.
 function createBoard(size){
@@ -25,16 +15,24 @@ function createBoard(size){
 
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
-        div.addEventListener("mouseover", function(){
-            div.style.backgroundColor ="black";
-        }
+        div.addEventListener("mouseover", colorDiv)
         
-        )
+        
         board.insertAdjacentElement("beforeend", div);
 
     }
 
 }
+
+//    Button listener for manual size input.
+let btn_popup = document.querySelector("#popup");
+btn_popup.addEventListener("click", function(){
+    let size = prompt("What size board would you like?");
+    if (isValidSize(size)) {
+        createBoard(size);
+    }
+});
+});
 
 //    Check if valid number.
 function isValidSize(size) {
@@ -45,6 +43,20 @@ function isValidSize(size) {
     return true;
 }
 
+//Call color function
+function colorDiv() {
+    if(color == "random"){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    }
+    else{
+        this.style.backgroundColor = 'black';
+    }
+}
+
+function setColor(colorChoice) {
+    color = colorChoice;
+
+}
 
 /* 
     User input on hover turns div section to fill with color.
