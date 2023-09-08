@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
 //    Break grid into squares, equal width and height.
 function createBoard(size){
     let board = document.querySelector(".board");
+    board.classList.add("board-container");
 
     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
@@ -16,8 +17,6 @@ function createBoard(size){
     for(let i = 0; i < numDivs; i++){
         let div = document.createElement("div");
         div.addEventListener("mouseover", colorDiv)
-        
-        
         board.insertAdjacentElement("beforeend", div);
 
     }
@@ -53,20 +52,50 @@ function colorDiv() {
     }
 }
 
+
 function setColor(colorChoice) {
     color = colorChoice;
-
 }
 
-/* 
-    User input on hover turns div section to fill with color.
+//Reset board to white.
+function resetBoard(){
+    let divs = document.querySelectorAll("div")
+    divs.forEach((div) => div.style.backgroundColor = "white")
+}
 
-    FOOTER
-    -->Ways to change color of the divs (as per Odin.)
-        -adding a new class to the div.
-        -changing the div's background color using Javascript.
-    Monochrome button changes input to black.
-    Rainbow mode changes input to random colors.
-    Clear canvas resets all divs to blank.
-    
-    */
+//Set board bg to colors.
+function redBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "red")
+}
+
+function orangeBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "orange")
+}
+
+function yellowBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "yellow")
+}
+
+function greenBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "green")
+}
+
+function blueBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "blue")
+}
+
+function purpleBoard(){
+    let boardContainer = document.querySelector(".board-container");
+    let divs = boardContainer.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "purple")
+}

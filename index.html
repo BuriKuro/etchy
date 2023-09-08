@@ -6,7 +6,7 @@
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js"></script> 
-</head>
+</head>s
 <body>
     <div class="header">
         <h1>Etch-a-Sketch</h1>
@@ -23,8 +23,20 @@
     <div class="btnChoices">
         <button class="btn" style="background-color: black;" onclick='setColor()'>Monochrome</button>
         <button class="btn" style="background-image:linear-gradient(to right, darkblue, darkred);" onclick="setColor('random')">Rainbow Mode</button>
-        <button class="btn" style="background-color: blue;">Clear Canvas</button>
+        <button class="btn" style="background-color: blue;" onclick='resetBoard()'>Clear Canvas</button>
+    </div>
 
+    <div class="headerFlex">
+    <h2>Background Color</h2>
+    </div>
+
+    <div class="btnChoices">
+        <button class="btn" style="background-color: red;" onclick='redBoard()'>Red</button>
+        <button class="btn" style="background-color: orange;" onclick='orangeBoard()'>Orange</button>
+        <button class="btn" style="background-color: yellow;" onclick='yellowBoard()'>Yellow</button>
+        <button class="btn" style="background-color: green;" onclick='greenBoard()'>Green</button>
+        <button class="btn" style="background-color: blue;" onclick='blueBoard()'>Blue</button>
+        <button class="btn" style="background-color: purple;" onclick='purpleBoard()'>Purple</button>
     </div>
 </body>
 </html>
